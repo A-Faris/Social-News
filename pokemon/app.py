@@ -22,22 +22,6 @@ pokemon_types = load(ptf)
 def pokemon():
     return "I wanna be the very best, that no one ever was...!"
 
-# @app.route("/pokemon", methods=["GET"])
-# def get_all_pokemon():
-#     # TODO: return a JSON object of all pokemon. 
-
-# @app.route("/pokemon/<int:id>")
-# def get_pokemon_by_id(id):
-#     # TODO: return a specific pokemon by ID
-
-# @app.route("/pokemon/types/<int:id>")
-# def get_pokemon_types_by_id(id):
-#     # TODO: return the types for a specific pokemon
-#     # E.g. pokemon/types/13 should return ['Bug', 'Poison']
-
-
-# @app.route("/type/<desc>")
-# def get_pokemon_by_type(desc):
-#     # TODO: return all the pokemon for a given type.
-#     # e.g. /type/Fire should return all fire type Pokemon
-#     # If there are no results, return a 404 error
+@app.route("/pokemon", methods=["GET"])
+def get_all_pokemon():
+    # TODO: return a JSON object of all pokemon. 
