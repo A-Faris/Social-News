@@ -16,17 +16,17 @@ social_news/api.py:14:0: W0612: Unused variable 'stories' (unused-variable)
 -----------------------------------
 Your code has been rated at 4.00/10
 
-./social_news/news_scaper.py
-************* Module news_scaper
-social_news/news_scaper.py:10:11: E0602: Undefined variable 'html_doc' (undefined-variable)
-social_news/news_scaper.py:7:11: R1732: Consider using 'with' for resource-allocating operations (consider-using-with)
-social_news/news_scaper.py:9:4: W0612: Unused variable 'html' (unused-variable)
-social_news/news_scaper.py:13:21: W0613: Unused argument 'domain_url' (unused-argument)
-social_news/news_scaper.py:15:4: W0612: Unused variable 'soup' (unused-variable)
-social_news/news_scaper.py:13:0: W0612: Unused variable 'parse_stories_bs' (unused-variable)
-social_news/news_scaper.py:23:4: W0612: Unused variable 'bbc_html_doc' (unused-variable)
-social_news/news_scaper.py:2:0: W0612: Unused variable 'datetime' (unused-variable)
-social_news/news_scaper.py:2:0: W0611: Unused datetime imported from datetime (unused-import)
+./social_news/news_scraper.py
+************* Module news_scraper
+social_news/news_scraper.py:10:11: E0602: Undefined variable 'html_doc' (undefined-variable)
+social_news/news_scraper.py:7:11: R1732: Consider using 'with' for resource-allocating operations (consider-using-with)
+social_news/news_scraper.py:9:4: W0612: Unused variable 'html' (unused-variable)
+social_news/news_scraper.py:13:21: W0613: Unused argument 'domain_url' (unused-argument)
+social_news/news_scraper.py:15:4: W0612: Unused variable 'soup' (unused-variable)
+social_news/news_scraper.py:13:0: W0612: Unused variable 'parse_stories_bs' (unused-variable)
+social_news/news_scraper.py:23:4: W0612: Unused variable 'bbc_html_doc' (unused-variable)
+social_news/news_scraper.py:2:0: W0612: Unused variable 'datetime' (unused-variable)
+social_news/news_scraper.py:2:0: W0611: Unused datetime imported from datetime (unused-import)
 
 -----------------------------------
 Your code has been rated at 1.33/10
