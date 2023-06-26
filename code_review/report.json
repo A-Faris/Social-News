@@ -4,12 +4,10 @@
    "file_name": "./pokemon/app.py",
    "errors": [
     "pokemon/app.py:28:1: E0001: Parsing failed: 'unexpected EOF while parsing (<unknown>, line 28)' (syntax-error)",
-    "social_news/api.py:40:0: E0102: function already defined line 3 (function-redefined)",
-    "social_news/api.py:3:0: W0612: Unused variable 'stories' (unused-variable)",
-    "social_news/api.py:40:0: W0612: Unused variable 'stories' (unused-variable)",
-    "social_news/api.py:35:0: W0612: Unused variable 'index' (unused-variable)"
+    "social_news/api.py:35:0: W0612: Unused variable 'index' (unused-variable)",
+    "social_news/api.py:40:0: W0612: Unused variable 'stories' (unused-variable)"
    ],
-   "score": 0.0
+   "score": 71.4
   },
   {
    "file_name": "./social_news/news_scraper.py",
@@ -27,5 +25,5 @@
    "score": 13.3
   }
  ],
- "average_score": 6.7
+ "average_score": 42.4
 }
