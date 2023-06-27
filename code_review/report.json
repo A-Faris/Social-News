@@ -29,7 +29,7 @@
     "19:36   error    'handleDelete' was used before it was defined    no-use-before-define",
     "32:11   error    'handleEdit' was used before it was defined      no-use-before-define",
     "39:18   warning  Unexpected prompt                                no-alert",
-    "40:19   warning  Unexpected prompt                                no-alert",
+    "40:20   warning  Unexpected prompt                                no-alert",
     "46:27   error    Missing trailing comma                           comma-dangle",
     "50:5    error    'onError' was used before it was defined         no-use-before-define",
     "56:5    warning  Unexpected alert                                 no-alert",
