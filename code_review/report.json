@@ -4,26 +4,35 @@
    "file_name": "./pokemon/app.py",
    "errors": [
     "pokemon/app.py:28:1: E0001: Parsing failed: 'unexpected EOF while parsing (<unknown>, line 28)' (syntax-error)",
-    "social_news/api.py:35:0: W0612: Unused variable 'index' (unused-variable)",
-    "social_news/api.py:40:0: W0612: Unused variable 'stories' (unused-variable)"
+    "social_news/api.py:4:0: W0612: Unused variable 'stories' (unused-variable)",
+    "social_news/api.py:90:0: W0612: Unused variable 'index' (unused-variable)",
+    "social_news/api.py:95:0: W0612: Unused variable 'addstory' (unused-variable)",
+    "social_news/api.py:100:0: W0612: Unused variable 'scrape' (unused-variable)",
+    "social_news/api.py:105:0: W0612: Unused variable 'get_stories' (unused-variable)",
+    "social_news/api.py:1:0: W0612: Unused variable 'jsonify' (unused-variable)",
+    "social_news/api.py:1:0: W0612: Unused variable 'request' (unused-variable)",
+    "social_news/api.py:2:0: W0612: Unused variable 'datetime' (unused-variable)",
+    "social_news/api.py:1:0: W0611: Unused jsonify imported from flask (unused-import)",
+    "social_news/api.py:1:0: W0611: Unused request imported from flask (unused-import)",
+    "social_news/api.py:2:0: W0611: Unused datetime imported from datetime (unused-import)"
    ],
-   "score": 71.4
+   "score": 8.3
   },
   {
-   "file_name": "./social_news/news_scraper.py",
+   "file_name": "./social_news/news_scaper.py",
    "errors": [
-    "social_news/news_scraper.py:10:11: E0602: Undefined variable 'html_doc' (undefined-variable)",
-    "social_news/news_scraper.py:7:11: R1732: Consider using 'with' for resource-allocating operations (consider-using-with)",
-    "social_news/news_scraper.py:9:4: W0612: Unused variable 'html' (unused-variable)",
-    "social_news/news_scraper.py:13:21: W0613: Unused argument 'domain_url' (unused-argument)",
-    "social_news/news_scraper.py:15:4: W0612: Unused variable 'soup' (unused-variable)",
-    "social_news/news_scraper.py:13:0: W0612: Unused variable 'parse_stories_bs' (unused-variable)",
-    "social_news/news_scraper.py:23:4: W0612: Unused variable 'bbc_html_doc' (unused-variable)",
-    "social_news/news_scraper.py:2:0: W0612: Unused variable 'datetime' (unused-variable)",
-    "social_news/news_scraper.py:2:0: W0611: Unused datetime imported from datetime (unused-import)"
+    "social_news/news_scaper.py:10:11: E0602: Undefined variable 'html_doc' (undefined-variable)",
+    "social_news/news_scaper.py:7:11: R1732: Consider using 'with' for resource-allocating operations (consider-using-with)",
+    "social_news/news_scaper.py:9:4: W0612: Unused variable 'html' (unused-variable)",
+    "social_news/news_scaper.py:13:21: W0613: Unused argument 'domain_url' (unused-argument)",
+    "social_news/news_scaper.py:15:4: W0612: Unused variable 'soup' (unused-variable)",
+    "social_news/news_scaper.py:13:0: W0612: Unused variable 'parse_stories_bs' (unused-variable)",
+    "social_news/news_scaper.py:23:4: W0612: Unused variable 'bbc_html_doc' (unused-variable)",
+    "social_news/news_scaper.py:2:0: W0612: Unused variable 'datetime' (unused-variable)",
+    "social_news/news_scaper.py:2:0: W0611: Unused datetime imported from datetime (unused-import)"
    ],
    "score": 13.3
   }
  ],
- "average_score": 42.4
+ "average_score": 10.8
 }
