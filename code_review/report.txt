@@ -1,57 +1,35 @@
-./social_news/static/scrape/index.js
+./social_news/api.py
+************* Module api
+social_news/api.py:4:0: W0612: Unused variable 'stories' (unused-variable)
+social_news/api.py:90:0: W0612: Unused variable 'index' (unused-variable)
+social_news/api.py:95:0: W0612: Unused variable 'addstory' (unused-variable)
+social_news/api.py:100:0: W0612: Unused variable 'scrape' (unused-variable)
+social_news/api.py:105:0: W0612: Unused variable 'get_stories' (unused-variable)
+social_news/api.py:1:0: W0612: Unused variable 'jsonify' (unused-variable)
+social_news/api.py:1:0: W0612: Unused variable 'request' (unused-variable)
+social_news/api.py:2:0: W0612: Unused variable 'datetime' (unused-variable)
+social_news/api.py:1:0: W0611: Unused jsonify imported from flask (unused-import)
+social_news/api.py:1:0: W0611: Unused request imported from flask (unused-import)
+social_news/api.py:2:0: W0611: Unused datetime imported from datetime (unused-import)
 
-/home/runner/work/Coursework-Data-Engineering-Backend-Week-1/Coursework-Data-Engineering-Backend-Week-1/social_news/static/scrape/index.js
-   2:3    warning  Unexpected alert        no-alert
-   3:103  error    Missing trailing comma  comma-dangle
-  19:43   error    Missing trailing comma  comma-dangle
-  20:8    error    Missing trailing comma  comma-dangle
-  30:7    warning  Unexpected alert        no-alert
+-----------------------------------
+Your code has been rated at 2.14/10
 
-✖ 5 problems (3 errors, 2 warnings)
-  3 errors and 0 warnings potentially fixable with the `--fix` option.
+./social_news/news_scaper.py
+************* Module news_scaper
+social_news/news_scaper.py:10:11: E0602: Undefined variable 'html_doc' (undefined-variable)
+social_news/news_scaper.py:7:11: R1732: Consider using 'with' for resource-allocating operations (consider-using-with)
+social_news/news_scaper.py:9:4: W0612: Unused variable 'html' (unused-variable)
+social_news/news_scaper.py:13:21: W0613: Unused argument 'domain_url' (unused-argument)
+social_news/news_scaper.py:15:4: W0612: Unused variable 'soup' (unused-variable)
+social_news/news_scaper.py:13:0: W0612: Unused variable 'parse_stories_bs' (unused-variable)
+social_news/news_scaper.py:23:4: W0612: Unused variable 'bbc_html_doc' (unused-variable)
+social_news/news_scaper.py:2:0: W0612: Unused variable 'datetime' (unused-variable)
+social_news/news_scaper.py:2:0: W0611: Unused datetime imported from datetime (unused-import)
 
-./social_news/static/addstory/index.js
+-----------------------------------
+Your code has been rated at 1.33/10
 
-/home/runner/work/Coursework-Data-Engineering-Backend-Week-1/Coursework-Data-Engineering-Backend-Week-1/social_news/static/addstory/index.js
-   2:3    warning  Unexpected alert        no-alert
-   3:103  error    Missing trailing comma  comma-dangle
-  20:43   error    Missing trailing comma  comma-dangle
-  21:8    error    Missing trailing comma  comma-dangle
-  31:7    warning  Unexpected alert        no-alert
-
-✖ 5 problems (3 errors, 2 warnings)
-  3 errors and 0 warnings potentially fixable with the `--fix` option.
-
-./social_news/static/index.js
-
-/home/runner/work/Coursework-Data-Engineering-Backend-Week-1/Coursework-Data-Engineering-Backend-Week-1/social_news/static/index.js
-   10:36   error    'handleVote' was used before it was defined      no-use-before-define
-   19:36   error    'handleDelete' was used before it was defined    no-use-before-define
-   32:11   error    'handleEdit' was used before it was defined      no-use-before-define
-   39:18   warning  Unexpected prompt                                no-alert
-   40:20   warning  Unexpected prompt                                no-alert
-   46:27   error    Missing trailing comma                           comma-dangle
-   50:5    error    'onError' was used before it was defined         no-use-before-define
-   56:5    warning  Unexpected alert                                 no-alert
-   59:3    error    'getStories' was used before it was defined      no-use-before-define
-   72:3    warning  Unexpected console statement                     no-console
-   76:27   error    Missing trailing comma                           comma-dangle
-   80:5    error    'onError' was used before it was defined         no-use-before-define
-   85:3    warning  Unexpected console statement                     no-console
-   86:3    warning  Unexpected console statement                     no-console
-   89:5    warning  Unexpected alert                                 no-alert
-   93:3    error    'displayStories' was used before it was defined  no-use-before-define
-   97:3    warning  Unexpected alert                                 no-alert
-   98:103  error    Missing trailing comma                           comma-dangle
-  111:27   error    Missing trailing comma                           comma-dangle
-  121:5    warning  Unexpected alert                                 no-alert
-  132:3    warning  Unexpected console statement                     no-console
-  137:27   error    Missing trailing comma                           comma-dangle
-  144:9    error    'res' is assigned a value but never used         no-unused-vars
-  146:3    warning  Unexpected console statement                     no-console
-  149:5    warning  Unexpected alert                                 no-alert
-  179:16   error    Missing trailing comma                           comma-dangle
-
-✖ 26 problems (14 errors, 12 warnings)
-  6 errors and 0 warnings potentially fixable with the `--fix` option.
-
+./pokemon/app.py
+************* Module app
+pokemon/app.py:28:1: E0001: Parsing failed: 'unexpected EOF while parsing (<unknown>, line 28)' (syntax-error)
