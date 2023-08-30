@@ -1,25 +1,9 @@
 {
  "files": [
   {
-   "file_name": "./social_news/api.py",
+   "file_name": "./pokemon/app.py",
    "errors": [
-    "social_news/api.py:4:0: W0612: Unused variable 'stories' (unused-variable)",
-    "social_news/api.py:90:0: W0612: Unused variable 'index' (unused-variable)",
-    "social_news/api.py:95:0: W0612: Unused variable 'addstory' (unused-variable)",
-    "social_news/api.py:100:0: W0612: Unused variable 'scrape' (unused-variable)",
-    "social_news/api.py:105:0: W0612: Unused variable 'get_stories' (unused-variable)",
-    "social_news/api.py:1:0: W0612: Unused variable 'jsonify' (unused-variable)",
-    "social_news/api.py:1:0: W0612: Unused variable 'request' (unused-variable)",
-    "social_news/api.py:2:0: W0612: Unused variable 'datetime' (unused-variable)",
-    "social_news/api.py:1:0: W0611: Unused jsonify imported from flask (unused-import)",
-    "social_news/api.py:1:0: W0611: Unused request imported from flask (unused-import)",
-    "social_news/api.py:2:0: W0611: Unused datetime imported from datetime (unused-import)"
-   ],
-   "score": 21.4
-  },
-  {
-   "file_name": "./social_news/news_scaper.py",
-   "errors": [
+    "pokemon/app.py:28:1: E0001: Parsing failed: 'unexpected EOF while parsing (<unknown>, line 28)' (syntax-error)",
     "social_news/news_scaper.py:10:11: E0602: Undefined variable 'html_doc' (undefined-variable)",
     "social_news/news_scaper.py:7:11: R1732: Consider using 'with' for resource-allocating operations (consider-using-with)",
     "social_news/news_scaper.py:9:4: W0612: Unused variable 'html' (unused-variable)",
@@ -31,7 +15,28 @@
     "social_news/news_scaper.py:2:0: W0611: Unused datetime imported from datetime (unused-import)"
    ],
    "score": 13.3
+  },
+  {
+   "file_name": "./social_news/api.py",
+   "errors": [
+    "social_news/api.py:1:0: W0612: Unused variable 'psycopg2' (unused-variable)",
+    "social_news/api.py:5:0: W0612: Unused variable 'stories' (unused-variable)",
+    "social_news/api.py:91:0: W0612: Unused variable 'index' (unused-variable)",
+    "social_news/api.py:96:0: W0612: Unused variable 'addstory' (unused-variable)",
+    "social_news/api.py:101:0: W0612: Unused variable 'scrape' (unused-variable)",
+    "social_news/api.py:106:0: W0612: Unused variable 'get_stories' (unused-variable)",
+    "social_news/api.py:2:0: W0612: Unused variable 'jsonify' (unused-variable)",
+    "social_news/api.py:2:0: W0612: Unused variable 'request' (unused-variable)",
+    "social_news/api.py:2:0: W0612: Unused variable 'connection' (unused-variable)",
+    "social_news/api.py:3:0: W0612: Unused variable 'datetime' (unused-variable)",
+    "social_news/api.py:1:0: W0611: Unused import psycopg2 (unused-import)",
+    "social_news/api.py:2:0: W0611: Unused jsonify imported from flask (unused-import)",
+    "social_news/api.py:2:0: W0611: Unused request imported from flask (unused-import)",
+    "social_news/api.py:2:0: W0611: Unused connection imported from flask (unused-import)",
+    "social_news/api.py:3:0: W0611: Unused datetime imported from datetime (unused-import)"
+   ],
+   "score": 0.0
   }
  ],
- "average_score": 17.4
+ "average_score": 6.7
 }

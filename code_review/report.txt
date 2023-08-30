@@ -1,20 +1,6 @@
-./social_news/api.py
-************* Module api
-social_news/api.py:4:0: W0612: Unused variable 'stories' (unused-variable)
-social_news/api.py:90:0: W0612: Unused variable 'index' (unused-variable)
-social_news/api.py:95:0: W0612: Unused variable 'addstory' (unused-variable)
-social_news/api.py:100:0: W0612: Unused variable 'scrape' (unused-variable)
-social_news/api.py:105:0: W0612: Unused variable 'get_stories' (unused-variable)
-social_news/api.py:1:0: W0612: Unused variable 'jsonify' (unused-variable)
-social_news/api.py:1:0: W0612: Unused variable 'request' (unused-variable)
-social_news/api.py:2:0: W0612: Unused variable 'datetime' (unused-variable)
-social_news/api.py:1:0: W0611: Unused jsonify imported from flask (unused-import)
-social_news/api.py:1:0: W0611: Unused request imported from flask (unused-import)
-social_news/api.py:2:0: W0611: Unused datetime imported from datetime (unused-import)
-
------------------------------------
-Your code has been rated at 2.14/10
-
+./pokemon/app.py
+************* Module app
+pokemon/app.py:28:1: E0001: Parsing failed: 'unexpected EOF while parsing (<unknown>, line 28)' (syntax-error)
 ./social_news/news_scaper.py
 ************* Module news_scaper
 social_news/news_scaper.py:10:11: E0602: Undefined variable 'html_doc' (undefined-variable)
@@ -30,6 +16,24 @@ social_news/news_scaper.py:2:0: W0611: Unused datetime imported from datetime (u
 -----------------------------------
 Your code has been rated at 1.33/10
 
-./pokemon/app.py
-************* Module app
-pokemon/app.py:28:1: E0001: Parsing failed: 'unexpected EOF while parsing (<unknown>, line 28)' (syntax-error)
+./social_news/api.py
+************* Module api
+social_news/api.py:1:0: W0612: Unused variable 'psycopg2' (unused-variable)
+social_news/api.py:5:0: W0612: Unused variable 'stories' (unused-variable)
+social_news/api.py:91:0: W0612: Unused variable 'index' (unused-variable)
+social_news/api.py:96:0: W0612: Unused variable 'addstory' (unused-variable)
+social_news/api.py:101:0: W0612: Unused variable 'scrape' (unused-variable)
+social_news/api.py:106:0: W0612: Unused variable 'get_stories' (unused-variable)
+social_news/api.py:2:0: W0612: Unused variable 'jsonify' (unused-variable)
+social_news/api.py:2:0: W0612: Unused variable 'request' (unused-variable)
+social_news/api.py:2:0: W0612: Unused variable 'connection' (unused-variable)
+social_news/api.py:3:0: W0612: Unused variable 'datetime' (unused-variable)
+social_news/api.py:1:0: W0611: Unused import psycopg2 (unused-import)
+social_news/api.py:2:0: W0611: Unused jsonify imported from flask (unused-import)
+social_news/api.py:2:0: W0611: Unused request imported from flask (unused-import)
+social_news/api.py:2:0: W0611: Unused connection imported from flask (unused-import)
+social_news/api.py:3:0: W0611: Unused datetime imported from datetime (unused-import)
+
+-----------------------------------
+Your code has been rated at 0.00/10
+
