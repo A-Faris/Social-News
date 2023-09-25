@@ -1,6 +1,26 @@
 ./pokemon/app.py
 ************* Module app
 pokemon/app.py:28:1: E0001: Parsing failed: 'unexpected EOF while parsing (<unknown>, line 28)' (syntax-error)
+./coding_problems/10-friday/test_friday_2.py
+./coding_problems/10-friday/friday_2.py
+./coding_problems/02-tuesday/tuesday.py
+./coding_problems/02-tuesday/test_tuesday.py
+./coding_problems/09-thursday/thursday_2.py
+./coding_problems/09-thursday/test_thursday_2.py
+./coding_problems/01-monday/monday.py
+./coding_problems/01-monday/test_monday.py
+./coding_problems/06-monday/test_monday_2.py
+./coding_problems/06-monday/monday_2.py
+./coding_problems/08-wednesday/wednesday_2.py
+./coding_problems/08-wednesday/test_wednesday_2.py
+./coding_problems/04-thursday/test_thursday.py
+./coding_problems/04-thursday/thursday.py
+./coding_problems/05-friday/friday.py
+./coding_problems/05-friday/test_friday.py
+./coding_problems/07-tuesday/tuesday_2.py
+./coding_problems/07-tuesday/test_tuesday_2.py
+./coding_problems/03-wednesday/test_wednesday.py
+./coding_problems/03-wednesday/wednesday.py
 ./social_news/news_scaper.py
 ************* Module news_scaper
 social_news/news_scaper.py:10:11: E0602: Undefined variable 'html_doc' (undefined-variable)
