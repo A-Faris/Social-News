@@ -1,6 +1,6 @@
 ./pokemon/app.py
 ************* Module app
-pokemon/app.py:28:1: E0001: Parsing failed: 'unexpected EOF while parsing (<unknown>, line 28)' (syntax-error)
+pokemon/app.py:29:1: E0001: Parsing failed: 'invalid syntax (<unknown>, line 29)' (syntax-error)
 ./social_news/news_scaper.py
 ************* Module news_scaper
 social_news/news_scaper.py:10:11: E0602: Undefined variable 'html_doc' (undefined-variable)

@@ -3,7 +3,7 @@
   {
    "file_name": "./pokemon/app.py",
    "errors": [
-    "pokemon/app.py:28:1: E0001: Parsing failed: 'unexpected EOF while parsing (<unknown>, line 28)' (syntax-error)",
+    "pokemon/app.py:29:1: E0001: Parsing failed: 'invalid syntax (<unknown>, line 29)' (syntax-error)",
     "social_news/news_scaper.py:10:11: E0602: Undefined variable 'html_doc' (undefined-variable)",
     "social_news/news_scaper.py:7:11: R1732: Consider using 'with' for resource-allocating operations (consider-using-with)",
     "social_news/news_scaper.py:9:4: W0612: Unused variable 'html' (unused-variable)",
