@@ -25,3 +25,6 @@ def pokemon():
 @app.route("/pokemon", methods=["GET"])
 def get_all_pokemon():
     # TODO: return a JSON object of all pokemon. 
+
+if __name__ == "__main__":
+    app.run(debug=True, host="0.0.0.0", port=5000)
