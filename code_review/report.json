@@ -1,58 +1,39 @@
 {
  "files": [
   {
-   "file_name": "./social_news/static/index.js",
+   "file_name": "./coding_problems/03-wednesday/wednesday.py",
    "errors": [
-    "14:36   error    'handleVote' was used before it was defined      no-use-before-define",
-    "23:36   error    'handleDelete' was used before it was defined    no-use-before-define",
-    "36:11   error    'handleEdit' was used before it was defined      no-use-before-define",
-    "43:18   warning  Unexpected prompt                                no-alert",
-    "44:20   warning  Unexpected prompt                                no-alert",
-    "50:27   error    Missing trailing comma                           comma-dangle",
-    "54:5    error    'onError' was used before it was defined         no-use-before-define",
-    "60:5    warning  Unexpected alert                                 no-alert",
-    "63:3    error    'getStories' was used before it was defined      no-use-before-define",
-    "76:3    warning  Unexpected console statement                     no-console",
-    "80:27   error    Missing trailing comma                           comma-dangle",
-    "84:5    error    'onError' was used before it was defined         no-use-before-define",
-    "89:3    warning  Unexpected console statement                     no-console",
-    "90:3    warning  Unexpected console statement                     no-console",
-    "93:5    warning  Unexpected alert                                 no-alert",
-    "97:3    error    'displayStories' was used before it was defined  no-use-before-define",
-    "101:3    warning  Unexpected alert                                 no-alert",
-    "102:103  error    Missing trailing comma                           comma-dangle",
-    "115:27   error    Missing trailing comma                           comma-dangle",
-    "125:5    warning  Unexpected alert                                 no-alert",
-    "136:3    warning  Unexpected console statement                     no-console",
-    "141:27   error    Missing trailing comma                           comma-dangle",
-    "150:3    warning  Unexpected console statement                     no-console",
-    "153:5    warning  Unexpected alert                                 no-alert",
-    "183:16   error    Missing trailing comma                           comma-dangle"
+    "social_news/news_scraper.py:10:11: E0602: Undefined variable 'html_doc' (undefined-variable)",
+    "social_news/news_scraper.py:7:11: R1732: Consider using 'with' for resource-allocating operations (consider-using-with)",
+    "social_news/news_scraper.py:9:4: W0612: Unused variable 'html' (unused-variable)",
+    "social_news/news_scraper.py:13:21: W0613: Unused argument 'domain_url' (unused-argument)",
+    "social_news/news_scraper.py:15:4: W0612: Unused variable 'soup' (unused-variable)",
+    "social_news/news_scraper.py:13:0: W0612: Unused variable 'parse_stories_bs' (unused-variable)",
+    "social_news/news_scraper.py:23:4: W0612: Unused variable 'bbc_html_doc' (unused-variable)",
+    "social_news/news_scraper.py:2:0: W0612: Unused variable 'datetime' (unused-variable)",
+    "social_news/news_scraper.py:2:0: W0611: Unused datetime imported from datetime (unused-import)"
    ],
-   "score": 90.5
+   "score": 13.3
   },
   {
-   "file_name": "./social_news/static/scrape/index.js",
+   "file_name": "./social_news/api.py",
    "errors": [
-    "2:3    warning  Unexpected alert        no-alert",
-    "3:103  error    Missing trailing comma  comma-dangle",
-    "19:43   error    Missing trailing comma  comma-dangle",
-    "20:8    error    Missing trailing comma  comma-dangle",
-    "30:7    warning  Unexpected alert        no-alert"
+    "social_news/api.py:1:0: W0612: Unused variable 'psycopg2' (unused-variable)",
+    "social_news/api.py:5:0: W0612: Unused variable 'stories' (unused-variable)",
+    "social_news/api.py:91:0: W0612: Unused variable 'index' (unused-variable)",
+    "social_news/api.py:96:0: W0612: Unused variable 'addstory' (unused-variable)",
+    "social_news/api.py:101:0: W0612: Unused variable 'scrape' (unused-variable)",
+    "social_news/api.py:106:0: W0612: Unused variable 'get_stories' (unused-variable)",
+    "social_news/api.py:2:0: W0612: Unused variable 'jsonify' (unused-variable)",
+    "social_news/api.py:2:0: W0612: Unused variable 'request' (unused-variable)",
+    "social_news/api.py:3:0: W0612: Unused variable 'datetime' (unused-variable)",
+    "social_news/api.py:1:0: W0611: Unused import psycopg2 (unused-import)",
+    "social_news/api.py:2:0: W0611: Unused jsonify imported from flask (unused-import)",
+    "social_news/api.py:2:0: W0611: Unused request imported from flask (unused-import)",
+    "social_news/api.py:3:0: W0611: Unused datetime imported from datetime (unused-import)"
    ],
-   "score": 39.3
-  },
-  {
-   "file_name": "./social_news/static/addstory/index.js",
-   "errors": [
-    "2:3    warning  Unexpected alert        no-alert",
-    "3:103  error    Missing trailing comma  comma-dangle",
-    "20:43   error    Missing trailing comma  comma-dangle",
-    "21:8    error    Missing trailing comma  comma-dangle",
-    "31:7    warning  Unexpected alert        no-alert"
-   ],
-   "score": 43.3
+   "score": 13.3
   }
  ],
- "average_score": 57.7
+ "average_score": 13.3
 }
