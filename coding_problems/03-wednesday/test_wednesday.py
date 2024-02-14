@@ -55,6 +55,7 @@ def test_basic_test_3():
                              (")}}{[", False),
                              ("([{([([])])}])", True),
                              ("][)()})", False),
-                             ("}[[]}{", False)])
+                             ("}[[]}{", False),
+                             ("[[((", False)])
 def test_random_test_cases(s, validity):
     assert is_valid(s) == validity
