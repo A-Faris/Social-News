@@ -30,6 +30,12 @@ Input: `s = "(]"`
 
 Output: `False`
 
+**Example 4:**
+
+Input: `s = "([])"`
+
+Output: `True`
+
 ## Constraints
 
 `1` <= `len(s)` <= `10^4`
