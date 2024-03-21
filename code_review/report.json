@@ -1,27 +1,9 @@
 {
  "files": [
   {
-   "file_name": "./social_news/api.py",
+   "file_name": "./coding_problems/06-monday/monday_2.py",
    "errors": [
-    "social_news/api.py:1:0: W0612: Unused variable 'psycopg2' (unused-variable)",
-    "social_news/api.py:5:0: W0612: Unused variable 'stories' (unused-variable)",
-    "social_news/api.py:91:0: W0612: Unused variable 'index' (unused-variable)",
-    "social_news/api.py:96:0: W0612: Unused variable 'addstory' (unused-variable)",
-    "social_news/api.py:101:0: W0612: Unused variable 'scrape' (unused-variable)",
-    "social_news/api.py:106:0: W0612: Unused variable 'get_stories' (unused-variable)",
-    "social_news/api.py:2:0: W0612: Unused variable 'jsonify' (unused-variable)",
-    "social_news/api.py:2:0: W0612: Unused variable 'request' (unused-variable)",
-    "social_news/api.py:3:0: W0612: Unused variable 'datetime' (unused-variable)",
-    "social_news/api.py:1:0: W0611: Unused import psycopg2 (unused-import)",
-    "social_news/api.py:2:0: W0611: Unused jsonify imported from flask (unused-import)",
-    "social_news/api.py:2:0: W0611: Unused request imported from flask (unused-import)",
-    "social_news/api.py:3:0: W0611: Unused datetime imported from datetime (unused-import)"
-   ],
-   "score": 13.3
-  },
-  {
-   "file_name": "./social_news/news_scraper.py",
-   "errors": [
+    "pokemon/app.py:29:1: E0001: Parsing failed: 'expected an indented block after function definition on line 26 (app, line 29)' (syntax-error)",
     "social_news/news_scraper.py:10:11: E0602: Undefined variable 'html_doc' (undefined-variable)",
     "social_news/news_scraper.py:7:11: R1732: Consider using 'with' for resource-allocating operations (consider-using-with)",
     "social_news/news_scraper.py:9:4: W0612: Unused variable 'html' (unused-variable)",
@@ -33,7 +15,42 @@
     "social_news/news_scraper.py:2:0: W0611: Unused datetime imported from datetime (unused-import)"
    ],
    "score": 13.3
+  },
+  {
+   "file_name": "./social_news/storage.py",
+   "errors": [
+    "social_news/storage.py:3:4: W2301: Unnecessary ellipsis constant (unnecessary-ellipsis)",
+    "social_news/storage.py:1:17: W0613: Unused argument 'data' (unused-argument)",
+    "social_news/storage.py:8:4: W2301: Unnecessary ellipsis constant (unnecessary-ellipsis)",
+    "social_news/storage.py:6:19: W0613: Unused argument 'data' (unused-argument)",
+    "social_news/storage.py:1:0: W0612: Unused variable 'save_to_file' (unused-variable)",
+    "social_news/storage.py:6:0: W0612: Unused variable 'load_from_file' (unused-variable)"
+   ],
+   "score": 0.0
+  },
+  {
+   "file_name": "./social_news/api.py",
+   "errors": [
+    "social_news/api.py:1:0: W0612: Unused variable 'psycopg2' (unused-variable)",
+    "social_news/api.py:6:0: W0612: Unused variable 'stories' (unused-variable)",
+    "social_news/api.py:92:0: W0612: Unused variable 'index' (unused-variable)",
+    "social_news/api.py:97:0: W0612: Unused variable 'addstory' (unused-variable)",
+    "social_news/api.py:102:0: W0612: Unused variable 'scrape' (unused-variable)",
+    "social_news/api.py:107:0: W0612: Unused variable 'get_stories' (unused-variable)",
+    "social_news/api.py:2:0: W0612: Unused variable 'jsonify' (unused-variable)",
+    "social_news/api.py:2:0: W0612: Unused variable 'request' (unused-variable)",
+    "social_news/api.py:3:0: W0612: Unused variable 'save_to_file' (unused-variable)",
+    "social_news/api.py:3:0: W0612: Unused variable 'load_from_file' (unused-variable)",
+    "social_news/api.py:4:0: W0612: Unused variable 'datetime' (unused-variable)",
+    "social_news/api.py:1:0: W0611: Unused import psycopg2 (unused-import)",
+    "social_news/api.py:2:0: W0611: Unused jsonify imported from flask (unused-import)",
+    "social_news/api.py:2:0: W0611: Unused request imported from flask (unused-import)",
+    "social_news/api.py:3:0: W0611: Unused save_to_file imported from storage (unused-import)",
+    "social_news/api.py:3:0: W0611: Unused load_from_file imported from storage (unused-import)",
+    "social_news/api.py:4:0: W0611: Unused datetime imported from datetime (unused-import)"
+   ],
+   "score": 0.0
   }
  ],
- "average_score": 13.3
+ "average_score": 4.4
 }
