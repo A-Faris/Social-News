@@ -1,4 +1,4 @@
-# Import the libraries we need. 
+# Import the libraries we need.
 # Flask is the framework we're using to create an API
 from flask import Flask
 # JSON is a nifty library which allows us to load JSON files into Python dict and vice versa.
@@ -17,14 +17,18 @@ pokemon_data = load(pf)
 ptf = open("pokemon_types.json")
 pokemon_types = load(ptf)
 
-# Add some routing. This is the first thing you'll see! 
+
 @app.route("/", methods=["GET"])
 def pokemon():
+    """Add some routing. This is the first thing you'll see!"""
     return "I wanna be the very best, that no one ever was...!"
+
 
 @app.route("/pokemon", methods=["GET"])
 def get_all_pokemon():
-    # TODO: return a JSON object of all pokemon. 
+    # TODO: return a JSON object of all pokemon.
+    ...
+
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=5000)
