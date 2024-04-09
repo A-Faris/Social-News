@@ -1,5 +1,5 @@
 import psycopg2
-from flask import Flask, current_app, jsonify, request
+from flask import Flask, current_app, jsonify, request, abort
 from storage import save_to_file, load_from_file
 from datetime import datetime
 
@@ -116,7 +116,13 @@ def scrape():
 
 @app.route("/stories", methods=["GET", "POST"])
 def get_stories():
-    pass
+    if request.method == "POST":
+        data = request.json
+        print(data)
+    else:
+        if stories:
+            return stories, 200
+        return {"error": True, "message": "No stories were found"}, 404
 
 
 if __name__ == "__main__":
