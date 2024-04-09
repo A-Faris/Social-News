@@ -18,25 +18,25 @@
   {
    "file_name": "./social_news/api.py",
    "errors": [
+    "social_news/api.py:118:0: R1710: Either all return statements in a function should return an expression, or none of them should. (inconsistent-return-statements)",
     "social_news/api.py:1:0: W0612: Unused variable 'psycopg2' (unused-variable)",
-    "social_news/api.py:6:0: W0612: Unused variable 'stories' (unused-variable)",
     "social_news/api.py:103:0: W0612: Unused variable 'index' (unused-variable)",
     "social_news/api.py:108:0: W0612: Unused variable 'addstory' (unused-variable)",
     "social_news/api.py:113:0: W0612: Unused variable 'scrape' (unused-variable)",
     "social_news/api.py:118:0: W0612: Unused variable 'get_stories' (unused-variable)",
     "social_news/api.py:2:0: W0612: Unused variable 'jsonify' (unused-variable)",
-    "social_news/api.py:2:0: W0612: Unused variable 'request' (unused-variable)",
+    "social_news/api.py:2:0: W0612: Unused variable 'abort' (unused-variable)",
     "social_news/api.py:3:0: W0612: Unused variable 'save_to_file' (unused-variable)",
     "social_news/api.py:3:0: W0612: Unused variable 'load_from_file' (unused-variable)",
     "social_news/api.py:4:0: W0612: Unused variable 'datetime' (unused-variable)",
     "social_news/api.py:1:0: W0611: Unused import psycopg2 (unused-import)",
     "social_news/api.py:2:0: W0611: Unused jsonify imported from flask (unused-import)",
-    "social_news/api.py:2:0: W0611: Unused request imported from flask (unused-import)",
+    "social_news/api.py:2:0: W0611: Unused abort imported from flask (unused-import)",
     "social_news/api.py:3:0: W0611: Unused save_to_file imported from storage (unused-import)",
     "social_news/api.py:3:0: W0611: Unused load_from_file imported from storage (unused-import)",
     "social_news/api.py:4:0: W0611: Unused datetime imported from datetime (unused-import)"
    ],
-   "score": 0.0
+   "score": 19.0
   },
   {
    "file_name": "./social_news/storage.py",
@@ -56,17 +56,23 @@
     "pokemon/app.py:29:5: W0511: TODO: return a JSON object of all pokemon. (fixme)",
     "pokemon/app.py:13:5: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)",
     "pokemon/app.py:17:6: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)",
+    "pokemon/app.py:34:16: W0622: Redefining built-in 'id' (redefined-builtin)",
+    "pokemon/app.py:39:21: W0622: Redefining built-in 'id' (redefined-builtin)",
+    "pokemon/app.py:44:28: W0622: Redefining built-in 'type' (redefined-builtin)",
+    "pokemon/app.py:44:0: R1710: Either all return statements in a function should return an expression, or none of them should. (inconsistent-return-statements)",
     "pokemon/app.py:13:5: R1732: Consider using 'with' for resource-allocating operations (consider-using-with)",
     "pokemon/app.py:17:6: R1732: Consider using 'with' for resource-allocating operations (consider-using-with)",
-    "pokemon/app.py:14:0: W0612: Unused variable 'pokemon_data' (unused-variable)",
-    "pokemon/app.py:18:0: W0612: Unused variable 'pokemon_types' (unused-variable)",
     "pokemon/app.py:22:0: W0612: Unused variable 'pokemon' (unused-variable)",
     "pokemon/app.py:28:0: W0612: Unused variable 'get_all_pokemon' (unused-variable)",
+    "pokemon/app.py:34:0: W0612: Unused variable 'get_pokemon' (unused-variable)",
+    "pokemon/app.py:44:0: W0612: Unused variable 'get_all_pokemon_of_type' (unused-variable)",
+    "pokemon/app.py:3:0: W0612: Unused variable 'jsonify' (unused-variable)",
     "pokemon/app.py:7:0: W0612: Unused variable 'dumps' (unused-variable)",
+    "pokemon/app.py:3:0: W0611: Unused jsonify imported from flask (unused-import)",
     "pokemon/app.py:7:0: W0611: Unused dumps imported from json (unused-import)"
    ],
-   "score": 15.4
+   "score": 19.0
   }
  ],
- "average_score": 7.2
+ "average_score": 12.8
 }
