@@ -1,7 +1,9 @@
-import psycopg2
-from flask import Flask, current_app, jsonify, request, abort
-from storage import save_to_file, load_from_file
+"""Social News Site"""
+
 from datetime import datetime
+import psycopg2
+from flask import Flask, current_app, request
+from storage import save_to_file, load_from_file
 
 stories = [
     {
@@ -101,28 +103,47 @@ app = Flask(__name__)
 
 @app.route("/", methods=["GET"])
 def index():
+    """index"""
     return current_app.send_static_file("index.html")
 
 
 @app.route("/add", methods=["GET"])
 def addstory():
+    """add story"""
     return current_app.send_static_file("./addstory/index.html")
 
 
 @app.route("/scrape", methods=["GET"])
 def scrape():
+    """scrape"""
     return current_app.send_static_file("./scrape/index.html")
 
 
-@app.route("/stories", methods=["GET", "POST"])
+@app.route("/stories", methods=["GET"])
 def get_stories():
-    if request.method == "POST":
-        data = request.json
-        print(data)
-    else:
-        if stories:
-            return stories, 200
-        return {"error": True, "message": "No stories were found"}, 404
+    """Get the information on the stories"""
+    if stories:
+        return stories, 200
+    return {"error": True, "message": "No stories were found"}, 404
+
+
+@app.route("/stories/<int:vote_id>/votes", methods=["POST"])
+def vote(vote_id: int):
+    """Change score when people vote on a story"""
+    data = request.json
+
+    for story in stories:
+        if story["id"] == vote_id:
+            story["updated_at"] = datetime.now()
+            if data["direction"] == "up":
+                story["score"] += 1
+            elif data["direction"] == "down":
+                if story["score"] == 0:
+                    return {"error": True,
+                            "message": "Can't downvote for a story with a score of 0"}, 400
+                story["score"] -= 1
+
+    return stories
 
 
 if __name__ == "__main__":
