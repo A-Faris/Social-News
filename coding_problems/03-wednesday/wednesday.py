@@ -1,2 +1,23 @@
 def is_valid(s: str) -> bool:
-    pass
+    stack = []
+    openers = ["(", "{", "["]
+    closers = [")", "}", "]"]
+    value = {"[": "]",
+             "{": "}",
+             "(": ")"}
+
+    for bracket in s:
+        if bracket in openers:
+            stack.append(bracket)
+        elif bracket in closers:
+            brack = stack.pop() if stack else "0"
+            if value.get(brack) != bracket:
+                return False
+
+    return len(stack) == 0
+
+
+print(is_valid("()[]{}"))  # True
+# print(is_valid("([]{)}"))  # False
+# print(is_valid("{[}]"))  # False
+# print(is_valid("([)"))  # False
