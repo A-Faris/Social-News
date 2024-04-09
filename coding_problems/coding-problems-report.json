@@ -1,12 +1,12 @@
 {
-    "created": 1712665863.3706992,
-    "duration": 1.2206141948699951,
+    "created": 1712671964.6593716,
+    "duration": 1.0472826957702637,
     "exitcode": 1,
     "root": "/home/runner/work/Coursework-Backend-Week-1/Coursework-Backend-Week-1/coding_problems",
     "environment": {},
     "summary": {
-        "passed": 97,
-        "failed": 121,
+        "passed": 141,
+        "failed": 77,
         "total": 218,
         "collected": 218
     }
