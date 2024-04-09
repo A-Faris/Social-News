@@ -15,26 +15,20 @@ Your code has been rated at 1.33/10
 
 ./social_news/api.py
 ************* Module api
-social_news/api.py:118:0: R1710: Either all return statements in a function should return an expression, or none of them should. (inconsistent-return-statements)
-social_news/api.py:1:0: W0612: Unused variable 'psycopg2' (unused-variable)
-social_news/api.py:103:0: W0612: Unused variable 'index' (unused-variable)
-social_news/api.py:108:0: W0612: Unused variable 'addstory' (unused-variable)
-social_news/api.py:113:0: W0612: Unused variable 'scrape' (unused-variable)
-social_news/api.py:118:0: W0612: Unused variable 'get_stories' (unused-variable)
-social_news/api.py:2:0: W0612: Unused variable 'jsonify' (unused-variable)
-social_news/api.py:2:0: W0612: Unused variable 'abort' (unused-variable)
-social_news/api.py:3:0: W0612: Unused variable 'save_to_file' (unused-variable)
-social_news/api.py:3:0: W0612: Unused variable 'load_from_file' (unused-variable)
-social_news/api.py:4:0: W0612: Unused variable 'datetime' (unused-variable)
-social_news/api.py:1:0: W0611: Unused import psycopg2 (unused-import)
-social_news/api.py:2:0: W0611: Unused jsonify imported from flask (unused-import)
-social_news/api.py:2:0: W0611: Unused abort imported from flask (unused-import)
-social_news/api.py:3:0: W0611: Unused save_to_file imported from storage (unused-import)
-social_news/api.py:3:0: W0611: Unused load_from_file imported from storage (unused-import)
-social_news/api.py:4:0: W0611: Unused datetime imported from datetime (unused-import)
+social_news/api.py:4:0: W0612: Unused variable 'psycopg2' (unused-variable)
+social_news/api.py:105:0: W0612: Unused variable 'index' (unused-variable)
+social_news/api.py:111:0: W0612: Unused variable 'addstory' (unused-variable)
+social_news/api.py:117:0: W0612: Unused variable 'scrape' (unused-variable)
+social_news/api.py:123:0: W0612: Unused variable 'get_stories' (unused-variable)
+social_news/api.py:131:0: W0612: Unused variable 'vote' (unused-variable)
+social_news/api.py:6:0: W0612: Unused variable 'save_to_file' (unused-variable)
+social_news/api.py:6:0: W0612: Unused variable 'load_from_file' (unused-variable)
+social_news/api.py:4:0: W0611: Unused import psycopg2 (unused-import)
+social_news/api.py:6:0: W0611: Unused save_to_file imported from storage (unused-import)
+social_news/api.py:6:0: W0611: Unused load_from_file imported from storage (unused-import)
 
 -----------------------------------
-Your code has been rated at 1.90/10
+Your code has been rated at 6.33/10
 
 ./social_news/storage.py
 ************* Module storage
