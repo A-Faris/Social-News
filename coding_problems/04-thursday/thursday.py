@@ -3,6 +3,3 @@ def missing_number(nums: list[int]) -> int:
         if i != num:
             return i
     return len(nums)
-
-
-print(missing_number([3, 0, 1]))
