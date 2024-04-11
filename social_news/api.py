@@ -1,5 +1,6 @@
 """Social News Site"""
 
+import pysnooper
 from datetime import datetime
 import psycopg2
 from flask import Flask, current_app, request
@@ -119,12 +120,55 @@ def scrape():
     return current_app.send_static_file("./scrape/index.html")
 
 
-@app.route("/stories", methods=["GET"])
+@app.route("/stories", methods=["GET", "POST"])
 def get_stories():
     """Get the information on the stories"""
-    if stories:
+    if request.method == "GET":
+        if stories:
+            args = request.args.to_dict()
+            search = args.get("search")
+            sort = args.get("sort")
+            order = args.get("order") == "ascending"
+
+            if search:
+                filtered_stories = [
+                    story for story in stories if search in story["title"]]
+                if filtered_stories:
+                    return filtered_stories
+                return [], 400
+
+            if sort:
+
+                if sort == "modified":
+                    sort = "updated_at"
+                elif sort == "created":
+                    sort = "created_at"
+
+                if sort in ["title", "score"]:
+                    return sorted(stories, key=lambda story: story[sort], reverse=order), 200
+                else:
+                    return sorted(stories, key=lambda story: datetime.strptime(
+                        story[sort], "%a, %d %b %Y %H:%M:%S %Z"), reverse=order), 200
+
+            return stories, 200
+        return {"error": True, "message": "No stories were found"}, 404
+
+    elif request.method == "POST":
+        data = request.json
+        title = data["title"]
+        url = data["url"]
+        print(title, url)
+        stories.append({
+            "created_at": datetime.now().strftime(
+                "%a, %d %b %Y %H:%M:%S GMT"),
+            "id": len(stories)+1,
+            "score": 0,
+            "title": title,
+            "updated_at": datetime.now().strftime(
+                "%a, %d %b %Y %H:%M:%S GMT"),
+            "url": url
+        })
         return stories, 200
-    return {"error": True, "message": "No stories were found"}, 404
 
 
 @app.route("/stories/<int:vote_id>/votes", methods=["POST"])
@@ -134,7 +178,8 @@ def vote(vote_id: int):
 
     for story in stories:
         if story["id"] == vote_id:
-            story["updated_at"] = datetime.now()
+            story["updated_at"] = datetime.now().strftime(
+                "%a, %d %b %Y %H:%M:%S GMT")
             if data["direction"] == "up":
                 story["score"] += 1
             elif data["direction"] == "down":
