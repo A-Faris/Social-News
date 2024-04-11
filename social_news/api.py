@@ -128,7 +128,7 @@ def get_stories():
             args = request.args.to_dict()
             search = args.get("search")
             sort = args.get("sort")
-            order = args.get("order") == "ascending"
+            order = args.get("order") == "descending"
 
             if search:
                 filtered_stories = [
@@ -138,7 +138,6 @@ def get_stories():
                 return [], 400
 
             if sort:
-
                 if sort == "modified":
                     sort = "updated_at"
                 elif sort == "created":
@@ -153,22 +152,35 @@ def get_stories():
             return stories, 200
         return {"error": True, "message": "No stories were found"}, 404
 
-    elif request.method == "POST":
-        data = request.json
-        title = data["title"]
-        url = data["url"]
-        print(title, url)
+    else:
+        id = 0
+        for story in stories:
+            id = max(story["id"]+1, id)
+
         stories.append({
             "created_at": datetime.now().strftime(
                 "%a, %d %b %Y %H:%M:%S GMT"),
-            "id": len(stories)+1,
+            "id": id,
             "score": 0,
-            "title": title,
+            "title": request.json["title"],
             "updated_at": datetime.now().strftime(
                 "%a, %d %b %Y %H:%M:%S GMT"),
-            "url": url
+            "url": request.json["url"]
         })
         return stories, 200
+
+
+@app.route("/stories/<int:id>", methods=["PATCH", "DELETE"])
+@pysnooper.snoop()
+def edit(id: int):
+    for story in stories:
+        if story["id"] == id:
+            if request.method == "PATCH":
+                story["title"] = request.json["title"]
+                story["url"] = request.json["url"]
+            else:
+                stories.remove(story)
+    return stories, 200
 
 
 @app.route("/stories/<int:vote_id>/votes", methods=["POST"])
