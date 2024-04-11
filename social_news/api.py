@@ -1,103 +1,12 @@
 """Social News Site"""
 
+from urllib.parse import urlparse
 import pysnooper
+import json
 from datetime import datetime
 import psycopg2
 from flask import Flask, current_app, request
 from storage import save_to_file, load_from_file
-
-stories = [
-    {
-        "created_at": "Sun, 20 Mar 2022 08:43:21 GMT",
-        "id": 1,
-        "score": 42,
-        "title": "Voters Overwhelmingly Back Community Broadband in Chicago and Denver",
-        "updated_at": "Tue, 22 Mar 2022 14:58:45 GMT",
-        "url": "https://www.vice.com/en/article/xgzxvz/voters-overwhelmingly-back-community-broadband-in-chicago-and-denver",
-        "website": "vice.com"
-    },
-    {
-        "created_at": "Wed, 16 Mar 2022 11:05:33 GMT",
-        "id": 2,
-        "score": 23,
-        "title": "eBird: A crowdsourced bird sighting database",
-        "updated_at": "Fri, 18 Mar 2022 13:20:47 GMT",
-        "url": "https://ebird.org/home",
-        "website": "ebird.org"
-    },
-    {
-        "created_at": "Sat, 09 Apr 2022 09:11:52 GMT",
-        "id": 3,
-        "score": 471,
-        "title": "Karen Gillan teams up with Lena Headey and Michelle Yeoh in assassin thriller Gunpowder Milkshake",
-        "updated_at": "Mon, 11 Apr 2022 17:13:29 GMT",
-        "url": "https://www.empireonline.com/movies/news/gunpowder-milk-shake-lena-headey-karen-gillan-exclusive/",
-        "website": "empireonline.com"
-    },
-    {
-        "created_at": "Mon, 07 Feb 2022 06:21:19 GMT",
-        "id": 4,
-        "score": 101,
-        "title": "Pfizers coronavirus vaccine is more than 90 percent effective in first analysis, company reports",
-        "updated_at": "Wed, 09 Feb 2022 08:44:22 GMT",
-        "url": "https://www.cnbc.com/2020/11/09/covid-vaccine-pfizer-drug-is-more-than-90percent-effective-in-preventing-infection.html",
-        "website": "cnbc.com"
-    },
-    {
-        "created_at": "Tue, 01 Mar 2022 12:31:45 GMT",
-        "id": 5,
-        "score": 87,
-        "title": "Budget: Pensions to get boost as tax-free limit to rise",
-        "updated_at": "Thu, 03 Mar 2022 15:29:58 GMT",
-        "url": "https://www.bbc.co.uk/news/business-64949083",
-        "website": "bbc.co.uk"
-    },
-    {
-        "created_at": "Fri, 25 Mar 2022 10:22:36 GMT",
-        "id": 6,
-        "score": 22,
-        "title": "Ukraine war: Zelensky honours unarmed soldier filmed being shot",
-        "updated_at": "Sun, 27 Mar 2022 12:55:19 GMT",
-        "url": "https://www.bbc.co.uk/news/world-europe-64938934",
-        "website": "bbc.co.uk"
-    },
-    {
-        "created_at": "Thu, 17 Mar 2022 09:28:42 GMT",
-        "id": 7,
-        "score": 313,
-        "title": "Willow Project: US government approves Alaska oil and gas development",
-        "updated_at": "Sat, 19 Mar 2022 11:34:53 GMT",
-        "url": "https://www.bbc.co.uk/news/world-us-canada-64943603",
-        "website": "bbc.co.uk"
-    },
-    {
-        "created_at": "Wed, 23 Feb 2022 07:15:59 GMT",
-        "id": 8,
-        "score": 2,
-        "title": "SVB and Signature Bank: How bad is US banking crisis and what does it mean?",
-        "updated_at": "Fri, 25 Feb 2022 09:41:22 GMT",
-        "url": "https://www.bbc.co.uk/news/business-64951630",
-        "website": "bbc.co.uk"
-    },
-    {
-        "created_at": "Sat, 26 Feb 2022 14:38:11 GMT",
-        "id": 9,
-        "score": 131,
-        "title": "Aukus deal: Summit was projection of power and collaborative intent",
-        "updated_at": "Mon, 28 Feb 2022 16:02:45 GMT",
-        "url": "https://www.bbc.co.uk/news/uk-politics-64948535",
-        "website": "bbc.co.uk"
-    },
-    {
-        "created_at": "Thu, 24 Mar 2022 13:49:27 GMT",
-        "id": 10,
-        "score": 41,
-        "title": "Dancer whose barefoot video went viral meets Camilla",
-        "updated_at": "Sat, 26 Mar 2022 15:51:34 GMT",
-        "url": "https://www.bbc.co.uk/news/uk-england-birmingham-64953863",
-        "website": "bbc.co.uk"
-    }
-]
 
 app = Flask(__name__)
 
@@ -120,34 +29,63 @@ def scrape():
     return current_app.send_static_file("./scrape/index.html")
 
 
+def add_to_file(stories: list[dict]) -> None:
+    """Add data to stories.json file"""
+    with open('stories.json', 'w', encoding='utf-8') as f:
+        json.dump(stories, f, ensure_ascii=False, indent=4)
+
+
+def search_stories(stories: list[dict], search: str) -> list[dict] | tuple[list, int]:
+    """Search for story"""
+    filtered_stories = [
+        story for story in stories if search in story["title"]]
+    if filtered_stories:
+        return filtered_stories
+    return [], 400
+
+
+def sort_stories(stories: list[dict], sort: str, order: bool) -> tuple[list[dict], int]:
+    """Sort the stories"""
+    if sort == "modified":
+        sort = "updated_at"
+    elif sort == "created":
+        sort = "created_at"
+
+    if sort in ["title", "score"]:
+        return sorted(stories, key=lambda story: story[sort], reverse=order), 200
+    else:
+        return sorted(stories, key=lambda story: datetime.strptime(
+            story[sort], "%a, %d %b %Y %H:%M:%S %Z"), reverse=order), 200
+
+
+def add_story(stories: list[dict], title: str, url: str, id: int) -> None:
+    """Add story to stories"""
+    stories.append({
+        "created_at": datetime.now().strftime(
+            "%a, %d %b %Y %H:%M:%S GMT"),
+        "id": id,
+        "score": 0,
+        "title": title,
+        "updated_at": datetime.now().strftime(
+            "%a, %d %b %Y %H:%M:%S GMT"),
+        "url": url,
+        "website": urlparse(url).netloc
+    })
+
+
 @app.route("/stories", methods=["GET", "POST"])
+@pysnooper.snoop()
 def get_stories():
     """Get the information on the stories"""
     if request.method == "GET":
         if stories:
             args = request.args.to_dict()
-            search = args.get("search")
-            sort = args.get("sort")
-            order = args.get("order") == "descending"
 
-            if search:
-                filtered_stories = [
-                    story for story in stories if search in story["title"]]
-                if filtered_stories:
-                    return filtered_stories
-                return [], 400
+            if args.get("search"):
+                return search_stories(stories, args["search"])
 
-            if sort:
-                if sort == "modified":
-                    sort = "updated_at"
-                elif sort == "created":
-                    sort = "created_at"
-
-                if sort in ["title", "score"]:
-                    return sorted(stories, key=lambda story: story[sort], reverse=order), 200
-                else:
-                    return sorted(stories, key=lambda story: datetime.strptime(
-                        story[sort], "%a, %d %b %Y %H:%M:%S %Z"), reverse=order), 200
+            if args.get("sort"):
+                return sort_stories(stories, args["sort"], args["order"] == "descending")
 
             return stories, 200
         return {"error": True, "message": "No stories were found"}, 404
@@ -157,16 +95,10 @@ def get_stories():
         for story in stories:
             id = max(story["id"]+1, id)
 
-        stories.append({
-            "created_at": datetime.now().strftime(
-                "%a, %d %b %Y %H:%M:%S GMT"),
-            "id": id,
-            "score": 0,
-            "title": request.json["title"],
-            "updated_at": datetime.now().strftime(
-                "%a, %d %b %Y %H:%M:%S GMT"),
-            "url": request.json["url"]
-        })
+        add_story(stories, request.get_json()[
+                  "title"], request.get_json()["url"], id)
+
+        add_to_file(stories)
         return stories, 200
 
 
@@ -176,32 +108,35 @@ def edit(id: int):
     for story in stories:
         if story["id"] == id:
             if request.method == "PATCH":
-                story["title"] = request.json["title"]
-                story["url"] = request.json["url"]
+                story["title"] = request.get_json()["title"]
+                story["url"] = request.get_json()["url"]
+                story["updated_at"] = datetime.now().strftime(
+                    "%a, %d %b %Y %H:%M:%S GMT")
             else:
                 stories.remove(story)
+    add_to_file(stories)
     return stories, 200
 
 
 @app.route("/stories/<int:vote_id>/votes", methods=["POST"])
 def vote(vote_id: int):
     """Change score when people vote on a story"""
-    data = request.json
-
     for story in stories:
         if story["id"] == vote_id:
             story["updated_at"] = datetime.now().strftime(
                 "%a, %d %b %Y %H:%M:%S GMT")
-            if data["direction"] == "up":
+            if request.get_json()["direction"] == "up":
                 story["score"] += 1
-            elif data["direction"] == "down":
+            elif request.get_json()["direction"] == "down":
                 if story["score"] == 0:
                     return {"error": True,
                             "message": "Can't downvote for a story with a score of 0"}, 400
                 story["score"] -= 1
-
+    add_to_file(stories)
     return stories
 
 
 if __name__ == "__main__":
+    with open("stories.json") as f:
+        stories = json.load(f)
     app.run(debug=True, host="0.0.0.0", port=5000)
