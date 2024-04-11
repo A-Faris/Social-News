@@ -15,26 +15,27 @@ Your code has been rated at 1.33/10
 
 ./social_news/api.py
 ************* Module api
-social_news/api.py:126:4: R1705: Unnecessary "elif" after "return", remove the leading "el" from "elif" (no-else-return)
-social_news/api.py:147:16: R1705: Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (no-else-return)
-social_news/api.py:147:27: R6201: Consider using set for membership test (use-set-for-membership)
-social_news/api.py:124:0: R1710: Either all return statements in a function should return an expression, or none of them should. (inconsistent-return-statements)
-social_news/api.py:3:0: W0612: Unused variable 'pysnooper' (unused-variable)
+social_news/api.py:156:8: W0622: Redefining built-in 'id' (redefined-builtin)
+social_news/api.py:126:4: R1705: Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (no-else-return)
+social_news/api.py:146:16: R1705: Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (no-else-return)
+social_news/api.py:146:27: R6201: Consider using set for membership test (use-set-for-membership)
+social_news/api.py:175:9: W0622: Redefining built-in 'id' (redefined-builtin)
+social_news/api.py:182:16: W4701: Iterated list 'stories' is being modified inside for loop body, consider iterating through a copy of it instead. (modified-iterating-list)
 social_news/api.py:5:0: W0612: Unused variable 'psycopg2' (unused-variable)
 social_news/api.py:106:0: W0612: Unused variable 'index' (unused-variable)
 social_news/api.py:112:0: W0612: Unused variable 'addstory' (unused-variable)
 social_news/api.py:118:0: W0612: Unused variable 'scrape' (unused-variable)
 social_news/api.py:124:0: W0612: Unused variable 'get_stories' (unused-variable)
-social_news/api.py:175:0: W0612: Unused variable 'vote' (unused-variable)
+social_news/api.py:175:0: W0612: Unused variable 'edit' (unused-variable)
+social_news/api.py:187:0: W0612: Unused variable 'vote' (unused-variable)
 social_news/api.py:7:0: W0612: Unused variable 'save_to_file' (unused-variable)
 social_news/api.py:7:0: W0612: Unused variable 'load_from_file' (unused-variable)
-social_news/api.py:3:0: W0611: Unused import pysnooper (unused-import)
 social_news/api.py:5:0: W0611: Unused import psycopg2 (unused-import)
 social_news/api.py:7:0: W0611: Unused save_to_file imported from storage (unused-import)
 social_news/api.py:7:0: W0611: Unused load_from_file imported from storage (unused-import)
 
 -----------------------------------
-Your code has been rated at 6.96/10
+Your code has been rated at 7.10/10
 
 ./social_news/storage.py
 ************* Module storage
