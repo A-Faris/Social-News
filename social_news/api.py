@@ -1,12 +1,19 @@
 """Social News Site"""
 
-from urllib.parse import urlparse
-import pysnooper
-import json
 from datetime import datetime
-import psycopg2
+import json
+from uuid import uuid4
+from urllib.parse import urlparse
 from flask import Flask, current_app, request
 from storage import save_to_file, load_from_file
+# import psycopg2
+
+import pysnooper
+
+SUCCESS = 200
+BAD_REQUEST = 400
+NOT_FOUND = 404
+NOW = datetime.now().strftime("%a, %d %b %Y %H:%M:%S GMT")
 
 app = Flask(__name__)
 
@@ -29,22 +36,7 @@ def scrape():
     return current_app.send_static_file("./scrape/index.html")
 
 
-def add_to_file(stories: list[dict]) -> None:
-    """Add data to stories.json file"""
-    with open('stories.json', 'w', encoding='utf-8') as f:
-        json.dump(stories, f, ensure_ascii=False, indent=4)
-
-
-def search_stories(stories: list[dict], search: str) -> list[dict] | tuple[list, int]:
-    """Search for story"""
-    filtered_stories = [
-        story for story in stories if search in story["title"]]
-    if filtered_stories:
-        return filtered_stories
-    return [], 400
-
-
-def sort_stories(stories: list[dict], sort: str, order: bool) -> tuple[list[dict], int]:
+def sort_stories(story_list: list[dict], sort: str, order: bool) -> tuple[list[dict], int]:
     """Sort the stories"""
     if sort == "modified":
         sort = "updated_at"
@@ -52,70 +44,63 @@ def sort_stories(stories: list[dict], sort: str, order: bool) -> tuple[list[dict
         sort = "created_at"
 
     if sort in ["title", "score"]:
-        return sorted(stories, key=lambda story: story[sort], reverse=order), 200
-    else:
-        return sorted(stories, key=lambda story: datetime.strptime(
-            story[sort], "%a, %d %b %Y %H:%M:%S %Z"), reverse=order), 200
+        return sorted(story_list, key=lambda story: story[sort], reverse=order), SUCCESS
+    return sorted(story_list, key=lambda story: datetime.strptime(
+        story[sort], "%a, %d %b %Y %H:%M:%S %Z"), reverse=order), SUCCESS
 
 
-def add_story(stories: list[dict], title: str, url: str, id: int) -> None:
-    """Add story to stories"""
-    stories.append({
-        "created_at": datetime.now().strftime(
-            "%a, %d %b %Y %H:%M:%S GMT"),
-        "id": id,
-        "score": 0,
-        "title": title,
-        "updated_at": datetime.now().strftime(
-            "%a, %d %b %Y %H:%M:%S GMT"),
-        "url": url,
-        "website": urlparse(url).netloc
-    })
-
-
-@app.route("/stories", methods=["GET", "POST"])
-@pysnooper.snoop()
+@app.route("/stories", methods=["GET"])
 def get_stories():
     """Get the information on the stories"""
-    if request.method == "GET":
-        if stories:
-            args = request.args.to_dict()
+    if not stories:
+        return {"error": True, "message": "No stories were found"}, NOT_FOUND
 
-            if args.get("search"):
-                return search_stories(stories, args["search"])
+    args = request.args.to_dict()
+    story_list = stories
 
-            if args.get("sort"):
-                return sort_stories(stories, args["sort"], args["order"] == "descending")
+    if args.get("search"):
+        story_list = [
+            story for story in stories if args["search"] in story["title"]]
+        if not story_list:
+            return [], NOT_FOUND
 
-            return stories, 200
-        return {"error": True, "message": "No stories were found"}, 404
+    if args.get("sort"):
+        return sort_stories(story_list, args["sort"], args["order"] == "descending"), SUCCESS
 
-    else:
-        id = 0
-        for story in stories:
-            id = max(story["id"]+1, id)
-
-        add_story(stories, request.get_json()[
-                  "title"], request.get_json()["url"], id)
-
-        add_to_file(stories)
-        return stories, 200
+    return story_list, SUCCESS
 
 
-@app.route("/stories/<int:id>", methods=["PATCH", "DELETE"])
+@app.route("/stories", methods=["POST"])
 @pysnooper.snoop()
-def edit(id: int):
+def add_stories():
+    """Add story to stories"""
+    stories.append({
+        "created_at": NOW,
+        "id": str(uuid4()),
+        "score": 0,
+        "title": request.get_json()["title"],
+        "updated_at": NOW,
+        "url": request.get_json()["url"],
+        "website": urlparse(request.get_json()["url"]).netloc
+    })
+
+    save_to_file(stories)
+    return stories, SUCCESS
+
+
+@app.route("/stories/<int:story_id>", methods=["PATCH", "DELETE"])
+def edit(story_id: int):
+    """Editing or deleting a story"""
     for story in stories:
-        if story["id"] == id:
+        if story["id"] == story_id:
             if request.method == "PATCH":
                 story["title"] = request.get_json()["title"]
                 story["url"] = request.get_json()["url"]
-                story["updated_at"] = datetime.now().strftime(
-                    "%a, %d %b %Y %H:%M:%S GMT")
+                story["updated_at"] = NOW
             else:
                 stories.remove(story)
-    add_to_file(stories)
-    return stories, 200
+    save_to_file(stories)
+    return stories, SUCCESS
 
 
 @app.route("/stories/<int:vote_id>/votes", methods=["POST"])
@@ -123,20 +108,18 @@ def vote(vote_id: int):
     """Change score when people vote on a story"""
     for story in stories:
         if story["id"] == vote_id:
-            story["updated_at"] = datetime.now().strftime(
-                "%a, %d %b %Y %H:%M:%S GMT")
+            story["updated_at"] = NOW
             if request.get_json()["direction"] == "up":
                 story["score"] += 1
             elif request.get_json()["direction"] == "down":
                 if story["score"] == 0:
                     return {"error": True,
-                            "message": "Can't downvote for a story with a score of 0"}, 400
+                            "message": "Can't downvote for a story with a score of 0"}, BAD_REQUEST
                 story["score"] -= 1
-    add_to_file(stories)
+    save_to_file(stories)
     return stories
 
 
 if __name__ == "__main__":
-    with open("stories.json") as f:
-        stories = json.load(f)
+    stories = load_from_file()
     app.run(debug=True, host="0.0.0.0", port=5000)
