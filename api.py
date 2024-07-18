@@ -1,14 +1,13 @@
 """Social News Site"""
 
 from datetime import datetime
-import json
 from uuid import uuid4
 from urllib.parse import urlparse
-from flask import Flask, current_app, request
-from storage import save_to_file, load_from_file
-# import psycopg2
 
-import pysnooper
+from flask import Flask, current_app, request
+
+from storage import save_to_file, load_from_file
+
 
 SUCCESS = 200
 BAD_REQUEST = 400
@@ -71,7 +70,6 @@ def get_stories():
 
 
 @app.route("/stories", methods=["POST"])
-@pysnooper.snoop()
 def add_stories():
     """Add story to stories"""
     stories.append({

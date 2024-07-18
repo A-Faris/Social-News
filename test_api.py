@@ -1,9 +1,7 @@
-from datetime import datetime
-import pytest
 from unittest.mock import patch
-from api import sort_stories
+
 from storage import save_to_file, load_from_file
-import json
+from api import sort_stories
 
 
 def test_api():
